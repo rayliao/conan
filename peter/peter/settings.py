@@ -19,8 +19,8 @@ ITEM_PIPELINES = {
     'peter.pipelines.MongoPipeline': 400,
 }
 
-MONGO_URI = 'mongodb+srv://ray:qwe123@cluster0-xwcsn.mongodb.net/test?retryWrites=true&w=majorit'
-MONGO_DB = ''
+MONGO_URI = 'localhost'
+MONGO_DB = 'quotes'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'peter (+http://www.yourdomain.com)'

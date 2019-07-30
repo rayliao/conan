@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Scrapy settings for peter project
+# Scrapy settings for scrapyuniversal project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -9,21 +9,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'peter'
+BOT_NAME = 'scrapyuniversal'
 
-SPIDER_MODULES = ['peter.spiders']
-NEWSPIDER_MODULE = 'peter.spiders'
+SPIDER_MODULES = ['scrapyuniversal.spiders']
+NEWSPIDER_MODULE = 'scrapyuniversal.spiders'
 
-ITEM_PIPELINES = {
-    'peter.pipelines.TextPipeline': 300,
-    'peter.pipelines.MongoPipeline': 400,
-}
-
-MONGO_URI = '192.168.1.255'
-MONGO_DB = 'quotes'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'peter (+http://www.yourdomain.com)'
+#USER_AGENT = 'scrapyuniversal (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -54,13 +47,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'peter.middlewares.PeterSpiderMiddleware': 543,
+#    'scrapyuniversal.middlewares.ScrapyuniversalSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    'peter.middlewares.PeterDownloaderMiddleware': 543,
+#    'scrapyuniversal.middlewares.ScrapyuniversalDownloaderMiddleware': 543,
 #}
 
 # Enable or disable extensions
@@ -72,7 +65,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'peter.pipelines.PeterPipeline': 300,
+#    'scrapyuniversal.pipelines.ScrapyuniversalPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

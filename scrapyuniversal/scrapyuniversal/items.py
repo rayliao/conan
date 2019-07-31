@@ -15,4 +15,3 @@ class NewsItem(Item):
     datetime = Field()
     source = Field()
     website = Field()
-    pass

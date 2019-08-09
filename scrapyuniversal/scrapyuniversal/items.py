@@ -15,3 +15,7 @@ class NewsItem(Item):
     datetime = Field()
     source = Field()
     website = Field()
+
+class PhotoItem(Item):
+    content = Field()
+    src = Field()

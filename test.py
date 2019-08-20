@@ -1,4 +1,5 @@
 import json
+from selenium import webdriver
 
 
 def file():
@@ -12,6 +13,9 @@ def demo():
             l = json.loads(line)
             print(l['title'])
 
+def browser():
+    webdriver.Chrome()
+
 
 if __name__ == "__main__":
-    demo()
+    browser()

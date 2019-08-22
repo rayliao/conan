@@ -30,7 +30,7 @@ class DoubanSpider(CrawlSpider):
             formdata={
                 'ck': '',
                 'name': '574954033@qq.com',
-                'password': 'wishes--931121',
+                'password': '***',
                 'remember': 'false',
                 'ticket': ''
             },

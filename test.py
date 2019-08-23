@@ -34,7 +34,7 @@ def browser():
         name = b.find_element_by_id('loginname')
         pwd = b.find_element_by_name('password')
         name.send_keys('574954033@qq.com')
-        # pwd.send_keys('***')
+        pwd.send_keys('***')
         submit = b.find_element_by_xpath('//a[@action-type="btn_submit"]')
         submit.click()
         wait.until(EC.presence_of_element_located(

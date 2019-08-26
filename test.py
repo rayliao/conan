@@ -1,6 +1,7 @@
 import json
 import requests
 from lxml import etree
+import re
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -20,9 +21,11 @@ def demo():
             print(l['title'])
 
 def test():
-    for m in range(5214, 5215):
-        for i in range(m * 100, (m + 1) * 100):
-            print(i)
+    res = requests.get('https://www.douban.com/people/ruxiaoguo/')
+    html = etree.HTML(res.text)
+    url = html.xpath('//div[@id="db-usr-profile"]/div[@class="pic"]/a/@href')
+    print(url[0].split('/')[-2])
+
 
 def browser():
     b = webdriver.Chrome()

@@ -1,18 +1,24 @@
 import pymongo
 
-client = pymongo.MongoClient(
-    "mongodb+srv://ray:qwe123@cluster0-xwcsn.mongodb.net/test?retryWrites=true&w=majority")
-db = client.test
-collection = db.students
+client = pymongo.MongoClient('localhost')
+db = client['localhost']
+collection = db['user']
 
-condition = {'id': '20170101'}
-student = collection.find_one(condition)
+condition = {'account': 'xiaoxiaohong1'}
 
-student['name'] = 'Alice'
+user = collection.find_one()
 
-result = collection.update_one(condition, {'$set': student})
+print(user)
 
-print(result)
+result = collection.update_one(condition, {'$set': dict({
+    'name': 'test',
+    'url': '',
+    'account': 'xiaoxiaohong',
+    'location': 'x',
+    'following': 344
+})}, True)
+
+# print(result)
 
 # student = {
 #     'id': '20170101',

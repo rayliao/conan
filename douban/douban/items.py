@@ -5,10 +5,11 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-import scrapy
+from scrapy import Field, Item
 
-
-class DoubanItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class UserItem(Item):
+    account = Field()
+    name = Field()
+    location = Field()
+    following = Field()
+    url = Field()

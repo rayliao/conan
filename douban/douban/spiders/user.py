@@ -14,8 +14,7 @@ class UserSpider(CrawlSpider):
     rules = (
         Rule(LinkExtractor(allow=r'/people/.*',
                            restrict_xpaths='//div[@class="comment-item"]'), callback='parse_item'),
-        # Rule(LinkExtractor(allow=r'\/people\/.*'), callback='parse_item'),
-        # Rule(LinkExtractor(restrict_xpaths='//div[@id="paginator"]//a[@class="next"]'))
+        Rule(LinkExtractor(restrict_xpaths='//div[@id="paginator"]//a[@class="next"]'))
     )
 
     def __init__(self, pwd, *args, **kwargs):
@@ -30,7 +29,6 @@ class UserSpider(CrawlSpider):
             'remember': 'false',
             'ticket': ''
         }
-        # TODO: 这种返回的类型是啥格式，[]这写法是啥意思
         return [FormRequest(self.login_page, formdata=post_data, callback=self.after_login)]
 
     def after_login(self, response):

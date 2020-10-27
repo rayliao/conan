@@ -5,7 +5,9 @@ import time
 
 
 def get_one_page(url):
-    response = requests.get(url)
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'}
+    response = requests.get(url, headers=headers)
     if response.status_code == 200:
         return response.text
     return None
@@ -14,7 +16,7 @@ def get_one_page(url):
 def parse_one_page(html):
     pattern = re.compile(
         '<em class=\"\">(.*?)</em>.*?alt=\"(.*?)\".*?src=\"(.*?)\".*?class=\"inq\">(.*?)</span>', re.S)
-    items = re.findall(pattern, html)
+    items = re.findall(pattern, str(html))
     for item in items:
         yield {
             'index': item[0],
@@ -36,7 +38,9 @@ def write_to_file(content):
         print(type(json.dumps(content)))
         f.write(json.dumps(content, ensure_ascii=False) + '\n')
 
+
 if __name__ == '__main__':
-    for i in range(10):
-        main(i*25)
-        time.sleep(1)
+    main(25)
+    # for i in range(10):
+    #     main(i*25)
+    #     time.sleep(1)

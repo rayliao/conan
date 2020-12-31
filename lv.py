@@ -1,23 +1,29 @@
 import requests
 import time
 import json
-from selenium import webdriver
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.support.wait import WebDriverWait
+# from selenium import webdriver
+# from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.support.wait import WebDriverWait
 
 
 def main():
     url = 'https://secure.louisvuitton.cn/ajaxsecure/getStockLevel.jsp?storeLang=zhs-cn&pageType=storelocator_section&skuIdList=M40712&null&_=1603769741816'
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'}
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.111 Safari/537.36'}
     response = requests.get(url, headers=headers)
-    print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) +
-          ": " + str(response.status_code))
     if response.status_code == 200:
         res = json.loads(response.text)
         inStock = res['M40712']['inStock']
+        print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) +
+              ": " + str(inStock))
         if inStock:
-            browser()
+            write_to_file(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) +
+                          ": " + str(inStock))
+
+
+def write_to_file(content):
+    with open('result.txt', 'a', encoding='utf-8') as f:
+        f.write(content + '\n')
 
 
 def browser():
@@ -57,6 +63,6 @@ def browser():
 
 
 if __name__ == '__main__':
-    for i in range(100):
+    for i in range(5760):
         main()
-        time.sleep(30)
+        time.sleep(10)
